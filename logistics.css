@@ -1,0 +1,139 @@
+/* Custom CSS for Professional Logistics Theme */
+
+:root {
+  /* Core Color Palette */
+  --primary-header: #0f172a; /* Deep navy blue */
+  --accent: #f59e0b;         /* Gold/amber */
+  --bg-wrapper: #f3f4f6;     /* Light grey */
+  
+  /* Additional UI Colors */
+  --text-main: #1f2937;
+  --text-muted: #4b5563;
+  --card-bg: #ffffff;
+  
+  /* Spacing */
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 3rem;
+  
+  /* Transitions & Shadows */
+  --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --shadow-base: 0 4px 6px -1px rgba(15, 23, 42, 0.08), 0 2px 4px -1px rgba(15, 23, 42, 0.04);
+  --shadow-elevated: 0 20px 25px -5px rgba(15, 23, 42, 0.15), 0 10px 10px -5px rgba(15, 23, 42, 0.08);
+  
+  /* Borders */
+  --radius-md: 8px;
+}
+
+/* Global Resets */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  color: var(--text-main);
+  background-color: var(--bg-wrapper);
+  line-height: 1.6;
+}
+
+/* Background Wrapper */
+.wrapper {
+  background-color: var(--bg-wrapper);
+  min-height: 100vh;
+  padding: var(--spacing-xl) var(--spacing-lg);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Primary Headers */
+h1, h2, h3, .primary-header {
+  color: var(--primary-header);
+  font-weight: 700;
+  margin-bottom: var(--spacing-md);
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+/* Decorative Accent for main headers */
+.section-title {
+  position: relative;
+  padding-bottom: var(--spacing-sm);
+  margin-bottom: var(--spacing-xl);
+}
+
+.section-title::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 60px;
+  height: 4px;
+  background-color: var(--accent);
+  border-radius: 2px;
+}
+
+/* Service Cards Container */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: var(--spacing-lg);
+}
+
+/* Service Card with Smooth Hover Elevation */
+.service-card {
+  background-color: var(--card-bg);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-lg);
+  box-shadow: var(--shadow-base);
+  border-top: 4px solid transparent;
+  transition: transform var(--transition-normal), 
+              box-shadow var(--transition-normal),
+              border-color var(--transition-normal);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Elevation Effect */
+.service-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-elevated);
+  border-top-color: var(--accent);
+}
+
+.service-card-header {
+  color: var(--primary-header);
+  font-size: 1.25rem;
+  margin-bottom: var(--spacing-sm);
+}
+
+.service-card-text {
+  color: var(--text-muted);
+  flex-grow: 1;
+}
+
+/* Accent Buttons */
+.btn-accent {
+  display: inline-block;
+  background-color: var(--accent);
+  color: #fff;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  border-radius: calc(var(--radius-md) / 2);
+  cursor: pointer;
+  transition: background-color var(--transition-normal);
+  text-decoration: none;
+  margin-top: var(--spacing-md);
+}
+
+.btn-accent:hover {
+  background-color: #d97706; /* Slightly darker gold/amber on hover */
+}

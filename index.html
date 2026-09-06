@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lemuel Investment Ltd | Clearing, Forwarding & Logistics</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom Logistics Styles -->
+    <link rel="stylesheet" href="logistics.css">
+    <!-- Custom Styles -->
+    <style>
+        :root {
+            --navy-blue: #0a2540;
+            --gold-accent: #d4a373;
+            --orange-accent: #e85d04;
+            --light-grey: #f8f9fa;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            color: #333;
+        }
+
+        /* Utilities */
+        .bg-navy { background-color: var(--navy-blue); }
+        .text-navy { color: var(--navy-blue); }
+        .bg-gold { background-color: var(--gold-accent); }
+        .text-gold { color: var(--gold-accent); }
+        .bg-light-grey { background-color: var(--light-grey); }
+        
+        .btn-gold {
+            background-color: var(--orange-accent);
+            color: #fff;
+            font-weight: 600;
+            padding: 10px 24px;
+            border: none;
+            transition: all 0.3s ease;
+        }
+        .btn-gold:hover {
+            background-color: #dc5804;
+            color: #fff;
+            transform: translateY(-2px);
+        }
+        
+        /* Top Bar & Nav */
+        .top-bar {
+            font-size: 0.85rem;
+            padding: 8px 0;
+            color: #e0e0e0;
+        }
+        .top-bar i { color: var(--gold-accent); margin-right: 5px; }
+        
+        .navbar { box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .navbar-brand {
+            font-weight: 800;
+            color: var(--navy-blue) !important;
+            font-size: 1.5rem;
+            line-height: 1.2;
+        }
+        .navbar-brand span {
+            display: block;
+            font-size: 0.75rem;
+            font-weight: 400;
+            color: #666;
+            letter-spacing: 1px;
+        }
+        .nav-link { font-weight: 500; color: #444; margin: 0 5px; }
+        .nav-link:hover { color: var(--orange-accent); }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            color: white;
+            padding: 120px 0;
+            overflow: hidden;
+            /* Fallback background if video fails */
+            background-color: var(--navy-blue);
+        }
+
+        .hero-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: 0;
+            transform: translateX(-50%) translateY(-50%);
+            object-fit: cover;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(10, 37, 64, 0.85), rgba(10, 37, 64, 0.85));
+            z-index: 1;
+        }
+
+        .hero .container {
+            position: relative;
+            z-index: 2;
+        }
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: var(--gold-accent);
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+        .director-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.1);
+            border-left: 4px solid var(--orange-accent);
+            padding: 10px 20px;
+            margin-top: 20px;
+            backdrop-filter: blur(5px);
+        }
+
+        /* Section Titles */
+        .section-title {
+            color: var(--navy-blue);
+            font-weight: 700;
+            margin-bottom: 3rem;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background-color: var(--orange-accent);
+        }
+        .text-start .section-title::after {
+            left: 0;
+            transform: none;
+        }
+
+        /* Service Cards */
+        .service-card {
+            background: #fff;
+            border: none;
+            border-top: 4px solid var(--navy-blue);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            border-top-color: var(--orange-accent);
+        }
+        .service-img-container {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+        }
+        .service-img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .service-card:hover .service-img-container img {
+            transform: scale(1.1);
+        }
+        .service-card-body {
+            padding: 30px 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .icon-box {
+            font-size: 2.5rem;
+            color: var(--navy-blue);
+            margin-bottom: 20px;
+        }
+        .service-card:hover .icon-box { color: var(--orange-accent); }
+
+        /* Process Timeline (Horizontal on desktop) */
+        .process-step {
+            text-align: center;
+            position: relative;
+            margin-bottom: 30px;
+        }
+        .process-icon {
+            width: 80px;
+            height: 80px;
+            background-color: var(--navy-blue);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin: 0 auto 20px;
+            border: 4px solid var(--light-grey);
+            box-shadow: 0 0 0 4px rgba(10, 37, 64, 0.1);
+            position: relative;
+            z-index: 2;
+        }
+        .process-title {
+            font-weight: 700;
+            color: var(--navy-blue);
+            font-size: 1.1rem;
+        }
+        
+        /* Company Timeline */
+        .history-timeline {
+            border-left: 3px solid var(--navy-blue);
+            padding-left: 30px;
+            margin-left: 20px;
+        }
+        .timeline-item {
+            position: relative;
+            margin-bottom: 40px;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -39px;
+            top: 0;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background-color: var(--orange-accent);
+            border: 3px solid #fff;
+            box-shadow: 0 0 0 3px var(--navy-blue);
+        }
+        .timeline-date {
+            font-weight: 700;
+            color: var(--orange-accent);
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+
+        /* Management Profile */
+        .profile-card {
+            background: #fff;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+        .profile-header {
+            background: var(--navy-blue);
+            color: #fff;
+            padding: 20px;
+            border-bottom: 4px solid var(--orange-accent);
+        }
+        .profile-body { padding: 25px; }
+
+        /* Industries */
+        .industry-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+        .industry-icon {
+            font-size: 1.5rem;
+            color: var(--orange-accent);
+            margin-right: 15px;
+            margin-top: 3px;
+        }
+
+        /* Form & Contact */
+        .contact-info-box {
+            background: var(--navy-blue);
+            color: white;
+            padding: 40px;
+            border-radius: 8px;
+            height: 100%;
+        }
+        .contact-info-item {
+            display: flex;
+            margin-bottom: 25px;
+        }
+        .contact-info-item i {
+            font-size: 1.5rem;
+            color: var(--orange-accent);
+            margin-right: 15px;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #051424;
+            color: #aaa;
+            padding: 60px 0 20px;
+        }
+        .footer h5 { color: #fff; margin-bottom: 20px; font-weight: 600; }
+        .footer a { color: #aaa; text-decoration: none; transition: color 0.3s; }
+        .footer a:hover { color: var(--orange-accent); }
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+            margin-top: 40px;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body id="home">
+
+    <!-- Top Bar -->
+    <div class="top-bar bg-navy d-none d-lg-block">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <span><i class="fas fa-map-marker-alt"></i> Plot No. 95, Ashieboe Mensah Nungua, Com. 15 Lashibi, Accra, Ghana</span>
+                </div>
+                <div class="col-md-4 text-end">
+                    <span><i class="fas fa-phone-alt"></i> +233 24 476 8691</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="#home">
+                <img src="logo.jpeg" alt="Lemuel Investment Logo" style="height: 50px; margin-right: 10px; border-radius: 4px;">
+                <div>
+                    LEMUEL<br>
+                    <span>INVESTMENT LTD</span>
+                </div>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#process">Our Process</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#management">Management</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#industries">Industries</a></li>
+                </ul>
+                <a href="#contact" class="btn btn-gold ms-lg-3 mt-3 mt-lg-0">Contact Us</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero text-center text-lg-start">
+        <video autoplay muted loop playsinline class="hero-video">
+            <source src="vd.mp4" type="video/mp4">
+        </video>
+        <div class="hero-overlay"></div>
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8">
+                    <p class="hero-subtitle">Established 2015 | Clearing & Forwarding | Logistics Support</p>
+                    <h1 class="display-4 fw-bold mb-4">Your Trusted Partner in Clearing, Forwarding & Logistics</h1>
+                    <p class="lead mb-4">Professional logistics and customs support for businesses and individuals moving goods into and out of Ghana. We simplify your logistics through accurate documentation and compliant cargo clearance.</p>
+                    
+                    <div class="director-badge mb-5">
+                        <i class="fas fa-user-tie text-gold me-2"></i> Led by Director George Opoku-Acheampong
+                    </div>
+                    
+                    <div>
+                        <a href="#services" class="btn btn-gold btn-lg me-3 mb-3">Our Services</a>
+                        <a href="#contact" class="btn btn-outline-light btn-lg mb-3">Request a Service</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Who We Are -->
+    <section id="about" class="py-5">
+        <div class="container py-4">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <img src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&q=80&w=1000" alt="Logistics Warehouse" class="img-fluid rounded shadow-lg border-bottom border-5 border-warning">
+                </div>
+                <div class="col-lg-6 ps-lg-5">
+                    <h2 class="section-title text-start">Professional Logistics Support Since 2015</h2>
+                    <p class="lead text-navy">Moving Your Goods. Simplifying Your Logistics.</p>
+                    <p>Lemuel Investment Ltd is a Ghanaian business established in 2015 by two business partners with an interest in the clearing, forwarding, and logistics sector.</p>
+                    <p>Our activities focus on helping clients navigate the various stages involved in international cargo movement—from documentation and shipment coordination to customs processing, cargo release, and delivery.</p>
+                    <p>We understand that international cargo movement requires coordination among multiple parties, including importers, exporters, shipping lines, customs authorities (GRA), terminals, and regulatory institutions. We combine practical logistics experience with professional knowledge to provide responsive and dependable support.</p>
+                    <ul class="list-unstyled mt-4">
+                        <li><i class="fas fa-check-circle text-gold me-2 mb-2"></i> Genuine 2015 Establishment</li>
+                        <li><i class="fas fa-check-circle text-gold me-2 mb-2"></i> Professional & Experienced Management</li>
+                        <li><i class="fas fa-check-circle text-gold me-2 mb-2"></i> Focus on Documentation and Compliance</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Services -->
+    <section id="services" class="py-5 bg-light-grey">
+        <div class="container py-4">
+            <h2 class="section-title text-center">Comprehensive Clearing & Forwarding Solutions</h2>
+            <p class="text-center mb-5 max-w-700 mx-auto">We offer 20 core services across pre-arrival, customs clearance, port operations, and post-clearance logistics. Here are our primary focus areas:</p>
+            
+            <div class="row g-4">
+                <!-- Service 1 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="service-card text-center">
+                        <div class="service-img-container">
+                            <img src="Import Customs Clearance.jpg" alt="Import Customs Clearance">
+                        </div>
+                        <div class="service-card-body">
+                            <h4 class="h5 fw-bold text-navy mt-2">Import Customs Clearance</h4>
+                            <p class="text-muted">Assistance with customs documentation, declaration, duty assessment, joint examination, and cargo-release processes at Ghanaian ports.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Service 2 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="service-card text-center">
+                        <div class="service-img-container">
+                            <img src="Export Customs Clearance.jpeg" alt="Export Customs Clearance">
+                        </div>
+                        <div class="service-card-body">
+                            <h4 class="h5 fw-bold text-navy mt-2">Export Customs Clearance</h4>
+                            <p class="text-muted">Support with export documentation, permits, customs processing, and coordination of shipments leaving Ghana by sea or air.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Service 3 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="service-card text-center">
+                        <div class="service-img-container">
+                            <img src="ICUMS Declaration Support.jpg" alt="ICUMS Declaration Support">
+                        </div>
+                        <div class="service-card-body">
+                            <h4 class="h5 fw-bold text-navy mt-2">ICUMS Declaration Support</h4>
+                            <p class="text-muted">Lodging customs declarations electronically through the Integrated Customs Management System (ICUMS) accurately and efficiently.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Service 4 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="service-card text-center">
+                        <div class="service-img-container">
+                            <img src="Customs Documentation.jpg" alt="Customs Documentation">
+                        </div>
+                        <div class="service-card-body">
+                            <h4 class="h5 fw-bold text-navy mt-2">Customs Documentation</h4>
+                            <p class="text-muted">Preparation, review, and verification of shipping documents, regulatory permits (FDA, GSA), and HS Code classification.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Service 5 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="service-card text-center">
+                        <div class="service-img-container">
+                            <img src="Freight Forwarding.jpg" alt="Freight Forwarding">
+                        </div>
+                        <div class="service-card-body">
+                            <h4 class="h5 fw-bold text-navy mt-2">Freight Forwarding</h4>
+                            <p class="text-muted">Coordination of international cargo movement between suppliers, carriers, ports, and inland destinations, including transit cargo.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Service 6 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="service-card text-center">
+                        <div class="service-img-container">
+                            <img src="Transportation Coordination.jpg" alt="Transportation Coordination">
+                        </div>
+                        <div class="service-card-body">
+                            <h4 class="h5 fw-bold text-navy mt-2">Transportation Coordination</h4>
+                            <p class="text-muted">Sourcing and coordinating reliable inland transportation from ports, airports, and freight stations directly to designated warehouses.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-5">
+                <a href="#contact" class="btn btn-outline-dark">Discuss Your Logistics Needs</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="py-5">
+        <div class="container py-4">
+            <h2 class="section-title text-center">Why Businesses Choose Us</h2>
+            <div class="row mt-5">
+                <div class="col-md-4 mb-4">
+                    <div class="d-flex">
+                        <i class="fas fa-calendar-check fs-2 text-gold me-3"></i>
+                        <div>
+                            <h5 class="fw-bold">Established Experience</h5>
+                            <p class="text-muted">Operating continuously since 2015 with deep experience in Ghana's clearing, forwarding and logistics environment.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="d-flex">
+                        <i class="fas fa-user-graduate fs-2 text-gold me-3"></i>
+                        <div>
+                            <h5 class="fw-bold">Professional Expertise</h5>
+                            <p class="text-muted">Management brings practical, formal experience in purchasing, imports, exports, and freight forwarding operations.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="d-flex">
+                        <i class="fas fa-folder-open fs-2 text-gold me-3"></i>
+                        <div>
+                            <h5 class="fw-bold">Attention to Documentation</h5>
+                            <p class="text-muted">We recognize that accurate, compliant, and complete documentation is the foundation of smooth cargo movement.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="d-flex">
+                        <i class="fas fa-comments fs-2 text-gold me-3"></i>
+                        <div>
+                            <h5 class="fw-bold">Responsive Communication</h5>
+                            <p class="text-muted">We actively maintain communication with clients, providing timely updates on relevant shipment developments.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="d-flex">
+                        <i class="fas fa-balance-scale fs-2 text-gold me-3"></i>
+                        <div>
+                            <h5 class="fw-bold">Compliance Focus</h5>
+                            <p class="text-muted">Strict adherence to Ghana Revenue Authority (GRA) procedures, port policies, and local regulatory requirements.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="d-flex">
+                        <i class="fas fa-handshake fs-2 text-gold me-3"></i>
+                        <div>
+                            <h5 class="fw-bold">Client-Centred Service</h5>
+                            <p class="text-muted">We seek to understand each client's unique supply chain requirements to provide practical, cost-effective solutions.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Operational Workflow Process -->
+    <section id="process" class="py-5 text-white position-relative" style="background: linear-gradient(rgba(10, 37, 64, 0.9), rgba(10, 37, 64, 0.9)), url('Our Process.jpg') no-repeat center center/cover;">
+        <div class="container py-4 position-relative" style="z-index: 2;">
+            <h2 class="section-title text-center text-white" style="color: white !important;">Our Process</h2>
+            <p class="text-center mb-5 max-w-700 mx-auto">How We Work: A streamlined 6-step approach to moving your goods.</p>
+            
+            <div class="row g-4 mt-4">
+                <div class="col-6 col-md-4 col-lg-2">
+                    <div class="process-step">
+                        <div class="process-icon"><i class="fas fa-comments"></i></div>
+                        <h4 class="process-title text-white">01. Consultation</h4>
+                        <p class="small text-light">Understanding shipment, origin, destination & logistics needs.</p>
+                    </div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-2">
+                    <div class="process-step">
+                        <div class="process-icon"><i class="fas fa-search"></i></div>
+                        <h4 class="process-title text-white">02. Review</h4>
+                        <p class="small text-light">Reviewing commercial, shipping & regulatory documentation.</p>
+                    </div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-2">
+                    <div class="process-step">
+                        <div class="process-icon"><i class="fas fa-laptop-code"></i></div>
+                        <h4 class="process-title text-white">03. Processing</h4>
+                        <p class="small text-light">Coordinating ICUMS customs declarations & permits.</p>
+                    </div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-2">
+                    <div class="process-step">
+                        <div class="process-icon"><i class="fas fa-box-open"></i></div>
+                        <h4 class="process-title text-white">04. Verification</h4>
+                        <p class="small text-light">Coordinating examination, scanning, duties & taxes.</p>
+                    </div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-2">
+                    <div class="process-step">
+                        <div class="process-icon"><i class="fas fa-file-export"></i></div>
+                        <h4 class="process-title text-white">05. Release</h4>
+                        <p class="small text-light">Following up on requirements necessary for cargo release.</p>
+                    </div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-2">
+                    <div class="process-step">
+                        <div class="process-icon"><i class="fas fa-truck"></i></div>
+                        <h4 class="process-title text-white">06. Delivery</h4>
+                        <p class="small text-light">Coordinating transportation to the final destination.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Management & Timeline -->
+    <section id="management" class="py-5 bg-light-grey">
+        <div class="container py-4">
+            <div class="row">
+                <!-- Management -->
+                <div class="col-lg-6 mb-5 mb-lg-0">
+                    <h2 class="section-title text-start">Our Management</h2>
+                    <p class="mb-4">Our strength is the practical logistics experience behind our management. Lemuel Investment Ltd benefits from professional training in freight forwarding and customs-related operations.</p>
+                    
+                    <div class="profile-card mb-4">
+                        <div class="profile-header">
+                            <h4 class="mb-0">George Opoku-Acheampong</h4>
+                            <span class="small text-gold">Co-Founder & Director — Logistics & Operations</span>
+                        </div>
+                        <div class="profile-body">
+                            <p class="mb-0">George is a logistics and supply-chain professional with extensive practical experience spanning purchasing, logistics coordination, imports, exports and freight forwarding. As a co-founder and Director since 2015, he brings deep knowledge of cargo movement, international documentation, and coordination with customs stakeholders.</p>
+                        </div>
+                    </div>
+
+                    <div class="profile-card">
+                        <div class="profile-header">
+                            <h4 class="mb-0">Justice Senyo</h4>
+                            <span class="small text-gold">Co-Founder & Director</span>
+                        </div>
+                        <div class="profile-body">
+                            <p class="mb-0">Justice brings professional experience in purchasing, logistics, imports, exports, freight forwarding and customs-related operations. Together with George, they established Lemuel Investment Ltd to provide reliable cargo-clearance support driven by integrity and efficiency.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Timeline -->
+                <div class="col-lg-5 offset-lg-1">
+                    <h2 class="section-title text-start">Our Journey</h2>
+                    <div class="history-timeline mt-4">
+                        <div class="timeline-item">
+                            <div class="timeline-date">2015 — Establishment</div>
+                            <p class="text-muted mb-0">Lemuel Investment Ltd was established in Ghana by two business partners to participate professionally in the clearing, forwarding and logistics sector.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">2016–2020</div>
+                            <h6 class="fw-bold text-navy">Business Development</h6>
+                            <p class="text-muted mb-0">Development of core clearing, forwarding and logistics-related activities and establishing foundational client relationships.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">2021–2024</div>
+                            <h6 class="fw-bold text-navy">Operational Experience</h6>
+                            <p class="text-muted mb-0">Continued deep involvement in complex cargo coordination, customs documentation, logistics management, and regulatory compliance.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">2025–2026</div>
+                            <h6 class="fw-bold text-navy">Continued Development</h6>
+                            <p class="text-muted mb-0">Building on the company's decade of experience while strengthening its professional footprint and service capabilities for the future.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Industries We Serve -->
+    <section id="industries" class="py-5">
+        <div class="container py-4">
+            <h2 class="section-title text-center">Industries We Serve</h2>
+            <p class="text-center mb-5">Our clearing and forwarding activities support clients operating across various sectors, subject to applicable customs requirements.</p>
+            
+            <div class="row">
+                <div class="col-md-6 col-lg-4">
+                    <div class="industry-item">
+                        <div class="industry-icon"><i class="fas fa-tractor"></i></div>
+                        <div>
+                            <h5 class="fw-bold text-navy">Agriculture & Agribusiness</h5>
+                            <p class="text-muted small">Support for the movement of agricultural products, inputs, equipment and related cargo.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="industry-item">
+                        <div class="industry-icon"><i class="fas fa-industry"></i></div>
+                        <div>
+                            <h5 class="fw-bold text-navy">Manufacturing</h5>
+                            <p class="text-muted small">Logistics coordination for industrial machinery, raw materials, and manufacturing-related imports/exports.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="industry-item">
+                        <div class="industry-icon"><i class="fas fa-store-alt"></i></div>
+                        <div>
+                            <h5 class="fw-bold text-navy">Trading & Distribution</h5>
+                            <p class="text-muted small">Clearing and forwarding support for commercial importers and distributors ensuring shelf readiness.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="industry-item">
+                        <div class="industry-icon"><i class="fas fa-hard-hat"></i></div>
+                        <div>
+                            <h5 class="fw-bold text-navy">Construction</h5>
+                            <p class="text-muted small">Logistics coordination for heavy construction materials, project cargo, and specialized equipment.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="industry-item">
+                        <div class="industry-icon"><i class="fas fa-shopping-cart"></i></div>
+                        <div>
+                            <h5 class="fw-bold text-navy">Retail</h5>
+                            <p class="text-muted small">Support for businesses involved in the importation and mass distribution of consumer products.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="industry-item">
+                        <div class="industry-icon"><i class="fas fa-boxes"></i></div>
+                        <div>
+                            <h5 class="fw-bold text-navy">General Commercial Cargo</h5>
+                            <p class="text-muted small">Professional end-to-end support for legitimate shipments across a wide range of different business sectors.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Professional Commitment -->
+    <section class="py-4 text-white position-relative" style="background: linear-gradient(rgba(232, 93, 4, 0.85), rgba(232, 93, 4, 0.85)), url('CTA.jpeg') no-repeat center center/cover;">
+        <div class="container text-center py-5 position-relative" style="z-index: 2;">
+            <h3 class="fw-bold mb-3 text-white display-6">Planning an Import or Export Shipment?</h3>
+            <p class="lead mb-4 text-white">Let us discuss your clearing, forwarding or logistics requirements.</p>
+            <a href="#contact" class="btn btn-outline-light btn-lg">Request a Service</a>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-5 bg-light-grey">
+        <div class="container py-4">
+            <div class="row g-4">
+                <div class="col-lg-5">
+                    <div class="contact-info-box shadow">
+                        <h3 class="fw-bold mb-4">Get in Touch</h3>
+                        <p class="mb-4">Whether you are importing, exporting or seeking logistics support, our team is available to discuss your requirements.</p>
+                        
+                        <div class="contact-info-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <h6 class="fw-bold mb-1">Address</h6>
+                                <p class="mb-0 text-light opacity-75">Plot No. 95, Ashieboe Mensah Nungua,<br>Com. 15 Lashibi, Accra, Greater Accra.<br>P.O.Box AT 1107 Achimota Accra, Ghana</p>
+                            </div>
+                        </div>
+                        <div class="contact-info-item">
+                            <i class="fas fa-phone-alt"></i>
+                            <div>
+                                <h6 class="fw-bold mb-1">Telephone / WhatsApp</h6>
+                                <p class="mb-0 text-light opacity-75">+233 24 476 8691 / 0244768691</p>
+                            </div>
+                        </div>
+                        <div class="contact-info-item">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <h6 class="fw-bold mb-1">Email</h6>
+                                <p class="mb-0 text-light opacity-75">info@lemuelinvestment.com</p>
+                            </div>
+                        </div>
+                        <div class="contact-info-item">
+                            <i class="fas fa-clock"></i>
+                            <div>
+                                <h6 class="fw-bold mb-1">Business Hours</h6>
+                                <p class="mb-0 text-light opacity-75">Mon - Fri: 8:00 AM - 5:00 PM</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-7">
+                    <div class="bg-white p-5 rounded shadow-sm h-100 border-top border-4" style="border-top-color: var(--navy-blue) !important;">
+                        <h3 class="section-title text-start mb-4">Request a Service</h3>
+                        <form id="service-request-form">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label class="form-label">Name</label>
+                                    <input type="text" id="form-name" class="form-control" required placeholder="Your Full Name">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Company</label>
+                                    <input type="text" id="form-company" class="form-control" placeholder="Company Name (Optional)">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Telephone</label>
+                                    <input type="tel" id="form-phone" class="form-control" required placeholder="Phone Number">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Email</label>
+                                    <input type="email" id="form-email" class="form-control" required placeholder="Email Address">
+                                </div>
+                                <div class="col-md-12">
+                                    <label class="form-label">Type of Shipment</label>
+                                    <select id="form-shipment" class="form-select">
+                                        <option value="" selected disabled>Select Shipment Type...</option>
+                                        <option value="import">Import</option>
+                                        <option value="export">Export</option>
+                                        <option value="transit">Transit</option>
+                                        <option value="freight">Freight Forwarding Only</option>
+                                        <option value="consulting">Advisory/Consulting</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Origin</label>
+                                    <input type="text" id="form-origin" class="form-control" placeholder="Country/Port of Origin">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Destination</label>
+                                    <input type="text" id="form-destination" class="form-control" placeholder="Final Destination">
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label">Message / Details</label>
+                                    <textarea id="form-message" class="form-control" rows="4" placeholder="Briefly describe your cargo and requirements..."></textarea>
+                                </div>
+                                <div class="col-12 mt-4">
+                                    <button type="submit" class="btn btn-gold w-100 py-2"><i class="fab fa-whatsapp me-2"></i>Submit Enquiry via WhatsApp</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <div class="d-flex align-items-center mb-3">
+                        <img src="logo.jpeg" alt="Lemuel Investment Logo" style="height: 40px; margin-right: 10px; border-radius: 4px;">
+                        <h5 class="text-white mb-0">LEMUEL INVESTMENT LTD</h5>
+                    </div>
+                    <p class="small mb-3">Clearing • Forwarding • Logistics • Supply Chain Support</p>
+                    <p class="small text-muted">Professional logistics and customs support for businesses and individuals moving goods into and out of Ghana. Established in 2015.</p>
+                </div>
+                
+                <div class="col-lg-2 col-md-6 mb-4 mb-lg-0">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled small">
+                        <li class="mb-2"><a href="#home">Home</a></li>
+                        <li class="mb-2"><a href="#about">About Us</a></li>
+                        <li class="mb-2"><a href="#services">Our Services</a></li>
+                        <li class="mb-2"><a href="#process">Our Process</a></li>
+                        <li class="mb-2"><a href="#management">Management</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+                    <h5>Core Services</h5>
+                    <ul class="list-unstyled small">
+                        <li class="mb-2"><a href="#services">Import Customs Clearance</a></li>
+                        <li class="mb-2"><a href="#services">Export Customs Clearance</a></li>
+                        <li class="mb-2"><a href="#services">ICUMS Declaration</a></li>
+                        <li class="mb-2"><a href="#services">Freight Forwarding</a></li>
+                        <li class="mb-2"><a href="#services">Logistics Coordination</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-3">
+                    <h5>Professional Standards</h5>
+                    <ul class="list-unstyled small text-muted">
+                        <li class="mb-2"><i class="fas fa-check text-gold me-2"></i> Accurate Documentation</li>
+                        <li class="mb-2"><i class="fas fa-check text-gold me-2"></i> Clear Communication</li>
+                        <li class="mb-2"><i class="fas fa-check text-gold me-2"></i> Customs Procedures</li>
+                        <li class="mb-2"><i class="fas fa-check text-gold me-2"></i> Confidentiality</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom text-center">
+                <p class="mb-0">&copy; 2026 Lemuel Investment Ltd. All Rights Reserved. | Professional logistics support for the movement and clearance of goods.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom App Scripts -->
+    <script src="app.js"></script>
+</body>
+</html>
