@@ -51,16 +51,16 @@ document.addEventListener('DOMContentLoaded', () => {
             const destination = document.getElementById('form-destination').value;
             const message = document.getElementById('form-message').value;
 
-            // Construct WhatsApp message
-            let whatsappMessage = `*New Service Request*\n\n`;
-            whatsappMessage += `*Name:* ${name}\n`;
-            if (company) whatsappMessage += `*Company:* ${company}\n`;
-            whatsappMessage += `*Telephone:* ${phone}\n`;
-            whatsappMessage += `*Email:* ${email}\n`;
-            whatsappMessage += `*Type of Shipment:* ${shipmentType}\n`;
-            if (origin) whatsappMessage += `*Origin:* ${origin}\n`;
-            if (destination) whatsappMessage += `*Destination:* ${destination}\n`;
-            if (message) whatsappMessage += `\n*Message / Details:*\n${message}`;
+                        // Construct WhatsApp message
+            let whatsappMessage = `New Service Request\n\n`;
+            whatsappMessage += `Name: ${name}\n`;
+            if (company) whatsappMessage += `Company: ${company}\n`;
+            whatsappMessage += `Telephone: ${phone}\n`;
+            whatsappMessage += `Email: ${email}\n`;
+            whatsappMessage += `Type of Shipment: ${shipmentType}\n`;
+            if (origin) whatsappMessage += `Origin: ${origin}\n`;
+            if (destination) whatsappMessage += `Destination: ${destination}\n`;
+            if (message) whatsappMessage += `\nMessage / Details:\n${message}`;
 
             // URL encode the message
             const encodedMessage = encodeURIComponent(whatsappMessage);
