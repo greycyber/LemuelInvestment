@@ -34,15 +34,48 @@
         .btn-gold {
             background-color: var(--orange-accent);
             color: #fff;
-            font-weight: 600;
-            padding: 10px 24px;
-            border: none;
+            font-weight: 700;
+            padding: 12px 28px;
+            border: 2px solid var(--orange-accent);
+            border-radius: 50px;
             transition: all 0.3s ease;
         }
         .btn-gold:hover {
             background-color: #dc5804;
+            border-color: #dc5804;
             color: #fff;
             transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(232, 93, 4, 0.4);
+        }
+        
+        .btn-outline-light {
+            font-weight: 700;
+            padding: 12px 28px;
+            border: 2px solid #fff;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            color: #fff;
+        }
+        .btn-outline-light:hover {
+            background-color: #fff;
+            color: var(--navy-blue);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-outline-dark {
+            font-weight: 700;
+            padding: 12px 28px;
+            border: 2px solid var(--navy-blue);
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            color: var(--navy-blue);
+        }
+        .btn-outline-dark:hover {
+            background-color: var(--navy-blue);
+            color: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(10, 37, 64, 0.2);
         }
         
         /* Top Bar & Nav */
@@ -99,13 +132,14 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(rgba(10, 37, 64, 0.85), rgba(10, 37, 64, 0.85));
+            background: rgba(10, 37, 64, 0.65); /* Made the overlay slightly more transparent */
             z-index: 1;
         }
 
         .hero .container {
             position: relative;
             z-index: 2;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.8); /* Added text shadow to improve readability over the video */
         }
         .hero-subtitle {
             font-size: 1.2rem;
@@ -364,11 +398,11 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-8">
-                    <p class="hero-subtitle">Established 2015 | Clearing & Forwarding | Logistics Support</p>
-                    <h1 class="display-4 fw-bold mb-4">Your Trusted Partner in Clearing, Forwarding & Logistics</h1>
-                    <p class="lead mb-4">Professional logistics and customs support for businesses and individuals moving goods into and out of Ghana. We simplify your logistics through accurate documentation and compliant cargo clearance.</p>
+                    <p class="hero-subtitle" style="color: #ffffff !important; font-weight: 700;">Established 2015 | Clearing & Forwarding | Logistics Support</p>
+                    <h1 class="display-4 fw-bold mb-4" style="color: var(--orange-accent);">Your Trusted Partner in Clearing, Forwarding & Logistics</h1>
+                    <p class="lead mb-4" style="color: #ffffff; font-weight: 500;">Professional logistics and customs support for businesses and individuals moving goods into and out of Ghana. We simplify your logistics through accurate documentation and compliant cargo clearance.</p>
                     
-                    <div class="director-badge mb-5">
+                    <div class="director-badge mb-5" style="border-left-color: var(--gold-accent);">
                         <i class="fas fa-user-tie text-gold me-2"></i> Led by Director George Opoku-Acheampong
                     </div>
                     
@@ -844,8 +878,8 @@
                         <img src="logo.jpeg" alt="Lemuel Investment Logo" style="height: 40px; margin-right: 10px; border-radius: 4px;">
                         <h5 class="text-white mb-0">LEMUEL INVESTMENT LTD</h5>
                     </div>
-                    <p class="small mb-3">Clearing • Forwarding • Logistics • Supply Chain Support</p>
-                    <p class="small text-muted">Professional logistics and customs support for businesses and individuals moving goods into and out of Ghana. Established in 2015.</p>
+                    <p class="small mb-3 text-light">Clearing • Forwarding • Logistics • Supply Chain Support</p>
+                    <p class="small" style="color: #e0e0e0;">Professional logistics and customs support for businesses and individuals moving goods into and out of Ghana. Established in 2015.</p>
                 </div>
                 
                 <div class="col-lg-2 col-md-6 mb-4 mb-lg-0">
@@ -872,7 +906,7 @@
 
                 <div class="col-lg-3">
                     <h5>Professional Standards</h5>
-                    <ul class="list-unstyled small text-muted">
+                    <ul class="list-unstyled small" style="color: #e0e0e0;">
                         <li class="mb-2"><i class="fas fa-check text-gold me-2"></i> Accurate Documentation</li>
                         <li class="mb-2"><i class="fas fa-check text-gold me-2"></i> Clear Communication</li>
                         <li class="mb-2"><i class="fas fa-check text-gold me-2"></i> Customs Procedures</li>
@@ -882,7 +916,7 @@
             </div>
             
             <div class="footer-bottom text-center">
-                <p class="mb-0">&copy; 2026 Lemuel Investment Ltd. All Rights Reserved. | Professional logistics support for the movement and clearance of goods.</p>
+                <p class="mb-0" style="color: #e0e0e0;">&copy; 2026 Lemuel Investment Ltd. All Rights Reserved. | Professional logistics support for the movement and clearance of goods.</p>
             </div>
         </div>
     </footer>
